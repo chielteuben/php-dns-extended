@@ -1,9 +1,10 @@
-[![Build Status](https://travis-ci.org/remotelyliving/php-dns.svg?branch=master)](https://travis-ci.org/remotelyliving/php-dns)
-[![Total Downloads](https://poser.pugx.org/remotelyliving/php-dns/downloads)](https://packagist.org/packages/remotelyliving/php-dns)
-[![Coverage Status](https://coveralls.io/repos/github/remotelyliving/php-dns/badge.svg?branch=master)](https://coveralls.io/github/remotelyliving/php-dns?branch=master) 
-[![License](https://poser.pugx.org/remotelyliving/php-dns/license)](https://packagist.org/packages/remotelyliving/php-dns)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/remotelyliving/php-dns/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/remotelyliving/php-dns/?branch=master)
-[![PHP CI](https://github.com/remotelyliving/php-dns/actions/workflows/php-ci.yml/badge.svg)](https://github.com/remotelyliving/php-dns/actions/workflows/php-ci.yml)
+[![License](https://poser.pugx.org/chielteuben/php-dns/license)](https://packagist.org/packages/chielteuben/php-dns)
+
+# Fork Notes
+
+This is a fork of remotelyliving/php-dns.
+The goal is to maintain and update dependencies for compatibility and modern PHP support.
+This package can be used as a drop-in replacement for the existing php-dns package with no breaking changes on the 5.x branch.
 
 # PHP-DNS: A DNS Abstraction in PHP
 
@@ -20,12 +21,12 @@ This library might be for you if:
 ### Installation
 
 ```sh
-composer require remotelyliving/php-dns
+composer require chielteuben/php-dns
 ```
 
 ### Usage
 
-**Basic Resolvers** can be found in [src/Resolvers](https://github.com/remotelyliving/php-dns/tree/master/src/Resolvers)
+**Basic Resolvers** can be found in [src/Resolvers](https://github.com/chielteuben/php-dns/tree/master/src/Resolvers)
 
 These resolvers at the least implement the `Resolvers\Interfaces\DNSQuery` interface
 
@@ -79,7 +80,7 @@ Lastly, and most expensively, there is `Resolvers\Interfaces\Chain::withAllResul
 All results will be a merge from all the different sources, useful if you want to see what all is out there.
 Consensus results will be only the results in common from source to source.
 
-[src/Resolvers/Interfaces](https://github.com/remotelyliving/php-dns/tree/master/src/Resolvers/Interfaces/Chain.php)
+[src/Resolvers/Interfaces](https://github.com/chielteuben/php-dns/tree/master/src/Resolvers/Interfaces/Chain.php)
 
 ```php
 // returns the first non empty result set
@@ -126,13 +127,13 @@ Only the `LocalSystem` Resolver implements it.
 
 All provided resolvers have the ability to add subscribers and listeners. They are directly compatible with `symfony/event-dispatcher`
 
-All events can be found here: [src/Observability/Events](https://github.com/remotelyliving/php-dns/tree/master/src/Observability/Events)
+All events can be found here: [src/Observability/Events](https://github.com/chielteuben/php-dns/tree/master/src/Observability/Events)
 
-With a good idea of what a subscriber can do with them here: [src/Observability/Subscribers](https://github.com/remotelyliving/php-dns/tree/master/src/Observability/Subscribers)
+With a good idea of what a subscriber can do with them here: [src/Observability/Subscribers](https://github.com/chielteuben/php-dns/tree/master/src/Observability/Subscribers)
 
 You could decide where you want to stream the events whether its to a log or somewhere else. The events are all safe to `json_encode()` without extra parsing.
 
-If you want to see how easy it is to wire all this up, check out [the repl bootstrap](https://github.com/remotelyliving/php-dns/tree/master/bootstrap/repl.php)
+If you want to see how easy it is to wire all this up, check out [the repl bootstrap](https://github.com/chielteuben/php-dns/tree/master/bootstrap/repl.php)
 
 ### Logging
 
@@ -140,7 +141,7 @@ All provided resolvers implement `Psr\Log\LoggerAwareInterface` and have a defau
 
 ### Tinkering
 
-Take a look in the [Makefile](https://github.com/remotelyliving/php-dns/blob/master/Makefile) for all the things you can do!
+Take a look in the [Makefile](https://github.com/chielteuben/php-dns/blob/master/Makefile) for all the things you can do!
 
 There is a very basic REPL implementation that wires up some Resolvers for you already and pipes events to sterr and stdout
 
