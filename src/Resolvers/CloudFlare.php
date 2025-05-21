@@ -41,8 +41,8 @@ final class CloudFlare extends ResolverAbstract
      * @param array<string, mixed> $options
      */
     public function __construct(
-        ClientInterface $http = null,
-        CloudFlareMapper $mapper = null,
+        ?ClientInterface $http = null,
+        ?CloudFlareMapper $mapper = null,
         private array $options = self::DEFAULT_OPTIONS
     ) {
         $this->http = $http ?? new Client();

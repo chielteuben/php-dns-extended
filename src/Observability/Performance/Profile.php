@@ -17,7 +17,7 @@ final class Profile implements ProfileInterface
 
     private Time $time;
 
-    public function __construct(private string $transactionName, Time $time = null)
+    public function __construct(private string $transactionName, ?Time $time = null)
     {
         $this->time = $time ?? new Timer();
     }

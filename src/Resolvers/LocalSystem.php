@@ -17,8 +17,7 @@ final class LocalSystem extends ResolverAbstract implements ReverseDNSQuery
 
     private LocalMapper $mapper;
 
-    public function __construct(LocalSystemDNS $systemDNS = null, LocalMapper $mapper = null)
-    {
+    public function __construct(?LocalSystemDNS $systemDNS = null, ?LocalMapper $mapper = null) {
         $this->systemDNS = $systemDNS ?? new LocalDNSService();
         $this->mapper = $mapper ?? new LocalMapper();
     }

@@ -37,9 +37,9 @@ final class Dig extends ResolverAbstract
     private DigMapper $mapper;
 
     public function __construct(
-        Dns $dig = null,
-        DigMapper $mapper = null,
-        Hostname $nameserver = null
+        ?Dns $dig = null,
+        ?DigMapper $mapper = null,
+        ?Hostname $nameserver = null
     ) {
         $this->dig = $dig ?? new Dns();
 
