@@ -1,8 +1,8 @@
-[![License](https://poser.pugx.org/chielteuben/php-dns/license)](https://packagist.org/packages/chielteuben/php-dns)
+[![License](https://poser.pugx.org/chielteuben/php-dns-extended/LICENSE)](https://packagist.org/packages/chielteuben/php-dns-extended)
 
 # Fork Notes
 
-This is a fork of remotelyliving/php-dns.
+This is a fork of [remotelyliving/php-dns](https://github.com/remotelyliving/php-dns).
 The goal is to maintain and update dependencies for compatibility and modern PHP support.
 This package can be used as a drop-in replacement for the existing php-dns package with no breaking changes on the 5.x branch.
 
@@ -26,7 +26,7 @@ composer require chielteuben/php-dns
 
 ### Usage
 
-**Basic Resolvers** can be found in [src/Resolvers](https://github.com/chielteuben/php-dns/tree/master/src/Resolvers)
+**Basic Resolvers** can be found in [src/Resolvers](https://github.com/chielteuben/php-dns-extended/tree/main/src/Resolvers)
 
 These resolvers at the least implement the `Resolvers\Interfaces\DNSQuery` interface
 
@@ -80,7 +80,7 @@ Lastly, and most expensively, there is `Resolvers\Interfaces\Chain::withAllResul
 All results will be a merge from all the different sources, useful if you want to see what all is out there.
 Consensus results will be only the results in common from source to source.
 
-[src/Resolvers/Interfaces](https://github.com/chielteuben/php-dns/tree/master/src/Resolvers/Interfaces/Chain.php)
+[src/Resolvers/Interfaces](https://github.com/chielteuben/php-dns-extended/tree/main/src/Resolvers/Interfaces/Chain.php)
 
 ```php
 // returns the first non empty result set
@@ -127,13 +127,13 @@ Only the `LocalSystem` Resolver implements it.
 
 All provided resolvers have the ability to add subscribers and listeners. They are directly compatible with `symfony/event-dispatcher`
 
-All events can be found here: [src/Observability/Events](https://github.com/chielteuben/php-dns/tree/master/src/Observability/Events)
+All events can be found here: [src/Observability/Events](https://github.com/chielteuben/php-dns-extended/tree/main/src/Observability/Events)
 
-With a good idea of what a subscriber can do with them here: [src/Observability/Subscribers](https://github.com/chielteuben/php-dns/tree/master/src/Observability/Subscribers)
+With a good idea of what a subscriber can do with them here: [src/Observability/Subscribers](https://github.com/chielteuben/php-dns-extended/tree/main/src/Observability/Subscribers)
 
 You could decide where you want to stream the events whether its to a log or somewhere else. The events are all safe to `json_encode()` without extra parsing.
 
-If you want to see how easy it is to wire all this up, check out [the repl bootstrap](https://github.com/chielteuben/php-dns/tree/master/bootstrap/repl.php)
+If you want to see how easy it is to wire all this up, check out [the repl bootstrap](https://github.com/chielteuben/php-dns-extended/tree/main/bootstrap/repl.php)
 
 ### Logging
 
@@ -141,7 +141,7 @@ All provided resolvers implement `Psr\Log\LoggerAwareInterface` and have a defau
 
 ### Tinkering
 
-Take a look in the [Makefile](https://github.com/chielteuben/php-dns/blob/master/Makefile) for all the things you can do!
+Take a look in the [Makefile](https://github.com/chielteuben/php-dns-extended/blob/main/Makefile) for all the things you can do!
 
 There is a very basic REPL implementation that wires up some Resolvers for you already and pipes events to sterr and stdout
 
