@@ -142,8 +142,16 @@ final class Chain extends ResolverAbstract implements Interfaces\Chain
 
         $collection = new DNSRecordCollection(...$merged);
 
-        return ($this->callThroughStrategy === self::STRATEGY_CONSENSUS)
-            ? $collection->withUniqueValuesExcluded()
-            : $collection->withUniqueValues();
+        if ($this->callThroughStrategy === self::STRATEGY_CONSENSUS) {
+            if (count($this->resolvers) === 1) {
+                $this->getLogger()->warning(
+                    'Using the consensus strategy (withConsensusResults) with only one resolver is deprecated and will return all values starting 6.x'
+                );
+            }
+
+            return $collection->withUniqueValuesExcluded();
+        }
+
+        return $collection->withUniqueValues();
     }
 }

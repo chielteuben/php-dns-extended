@@ -40,8 +40,8 @@ final class GoogleDNS extends ResolverAbstract
      * @param array<string, mixed> $options
      */
     public function __construct(
-        ClientInterface $http = null,
-        GoogleDNSMapper $mapper = null,
+        ?ClientInterface $http = null,
+        ?GoogleDNSMapper $mapper = null,
         private int $consensusAttempts = 3,
         private array $options = self::DEFAULT_OPTIONS
     ) {

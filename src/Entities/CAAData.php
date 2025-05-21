@@ -14,8 +14,11 @@ final class CAAData extends DataAbstract implements \Stringable
 {
     private ?string $value;
 
-    public function __construct(private int $flags, private string $tag, string $value = null)
-    {
+    public function __construct(
+        private int $flags,
+        private string $tag,
+        ?string $value = null
+    ) {
         $this->value = ($value)
             ? $this->normalizeValue($value)
             : null;

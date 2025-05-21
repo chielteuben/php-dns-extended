@@ -38,7 +38,7 @@ interface DNSQuery
     /**
      * @throws \RemotelyLiving\PHPDNS\Resolvers\Exceptions\QueryFailure
      */
-    public function getRecords(string $hostname, string $recordType = null): DNSRecordCollection;
+    public function getRecords(string $hostname, ?string $recordType = null): DNSRecordCollection;
 
     /**
      * @throws \RemotelyLiving\PHPDNS\Resolvers\Exceptions\QueryFailure

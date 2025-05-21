@@ -17,7 +17,7 @@ final class DNSQueried extends ObservableEventAbstract
         private Resolver $resolver,
         private Hostname $hostname,
         private DNSRecordType $recordType,
-        DNSRecordCollection $recordCollection = null
+        ?DNSRecordCollection $recordCollection = null
     ) {
         parent::__construct();
         $this->recordCollection = $recordCollection ?? new DNSRecordCollection();
