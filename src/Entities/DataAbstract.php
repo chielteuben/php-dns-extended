@@ -61,8 +61,15 @@ abstract class DataAbstract implements Arrayable, Serializable, \Stringable
             );
         }
 
-        if ($recordType->isA(DNSRecordType::TYPE_CAA) && count($parsed) === 3) {
-            return new CAAData((int)$parsed[0], (string)$parsed[1], $parsed[2]);
+        if ($recordType->isA(DNSRecordType::TYPE_CAA)) {
+            // A CAA value may legitimately contain spaces as part of its parameters, e.g.
+            // "digicert.com; cansignhttpexchanges=yes" (RFC 8659). Limit the split to
+            // <flags> <tag> <value> so the value is kept intact instead of being tokenized on every space.
+            $caa = explode(' ', $data, 3);
+
+            if (count($caa) === 3) {
+                return new CAAData((int)$caa[0], (string)$caa[1], $caa[2]);
+            }
         }
 
         if ($recordType->isA(DNSRecordType::TYPE_SRV)) {

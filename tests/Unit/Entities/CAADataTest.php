@@ -90,10 +90,21 @@ class CAADataTest extends BaseTestAbstract
     /**
      * @test
      */
-    public function doesNotAllowSpaceCharactersAsValidValue(): void
+    public function allowsParametersInValue(): void
+    {
+        $caaData = new CAAData(0, 'issue', 'digicert.com; cansignhttpexchanges=yes');
+
+        $this->assertSame('digicert.com; cansignhttpexchanges=yes', $caaData->getValue());
+    }
+
+    /**
+     * @test
+     */
+    public function doesNotAllowGenericRecordFormatAsValidValue(): void
     {
         $this->expectException(Exceptions\InvalidArgumentException::class);
-        $badValue = '\'\\# 26 00 09 69 73 73 75 65 77 69 6c 64 6c 65 74 73 65 6e 63 72 79 70 74 2e 6f 72 67\'';
+        // RFC 3597 generic/unknown record format is not a valid CAA presentation value
+        $badValue = '\# 26 00 09 69 73 73 75 65 77 69 6c 64 6c 65 74 73 65 6e 63 72 79 70 74 2e 6f 72 67';
         new CAAData(0, 'issuewild', $badValue);
     }
 }

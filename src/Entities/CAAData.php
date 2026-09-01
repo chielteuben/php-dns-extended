@@ -4,9 +4,9 @@ namespace RemotelyLiving\PHPDNS\Entities;
 
 use RemotelyLiving\PHPDNS\Exceptions;
 
-use function preg_match;
 use function serialize;
 use function str_ireplace;
+use function str_starts_with;
 use function trim;
 use function unserialize;
 
@@ -64,7 +64,9 @@ final class CAAData extends DataAbstract implements \Stringable
     {
         $normalized = trim(str_ireplace('"', '', $value));
 
-        if (preg_match('/\s/m', $normalized)) {
+        // Reject the RFC 3597 generic/unknown record format (e.g. "\# 26 00 09 ...") that some resolvers
+        // return when they do not understand CAA.
+        if (str_starts_with($normalized, '\#')) {
             throw new Exceptions\InvalidArgumentException("$value is not a valid CAA value");
         }
 
