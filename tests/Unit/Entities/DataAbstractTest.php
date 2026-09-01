@@ -107,6 +107,12 @@ class DataAbstractTest extends BaseTestAbstract
         $this->assertSame(0, $caaData->getFlags());
         $this->assertSame('issue', $caaData->getTag());
 
+        $caaParameterString = '0 issue "digicert.com; cansignhttpexchanges=yes"';
+        $caaParameterData = $this->dataAbstract1::createFromTypeAndString(DNSRecordType::createCAA(), $caaParameterString);
+        $this->assertSame('digicert.com; cansignhttpexchanges=yes', $caaParameterData->getValue());
+        $this->assertSame(0, $caaParameterData->getFlags());
+        $this->assertSame('issue', $caaParameterData->getTag());
+
         $srvString = '100 200 9090 target.co.';
         $srvData = $this->dataAbstract1::createFromTypeAndString(DNSRecordType::createSRV(), $srvString);
         $this->assertSame(100, $srvData->getPriority());
