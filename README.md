@@ -1,4 +1,4 @@
-[![License](https://poser.pugx.org/chielteuben/php-dns-extended/LICENSE)](https://packagist.org/packages/chielteuben/php-dns-extended)
+[![License](https://poser.pugx.org/chielteuben/php-dns-extended/license)](https://packagist.org/packages/chielteuben/php-dns-extended)
 
 # Fork Notes
 
